@@ -1,0 +1,19 @@
+.nav-list li {
+  background-color: #EAD0CA;
+  border-radius: 17px;
+  margin: 0 auto 7px;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.nav-list li a {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 18px;
+  color: #4A365C;
+  letter-spacing: 0.1em;
+  padding: 0.8rem;
+  display: block;
+  text-align: center;
+}
