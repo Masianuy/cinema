@@ -5,7 +5,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import CinemaService from './service/CinemaService';
+import CinemaService from './Service/CinemaService';
 
 import './layout.css';
 import { List, ListItem } from '@mui/material';
@@ -35,7 +35,7 @@ function Layout() {
             </List>
           </Grid>
           <Grid item lg={5} md={5} xl={5} xs={5} >
-            <main>
+            <main style={{textAlign: 'center'}}>
               <Outlet />
             </main>
           </Grid>

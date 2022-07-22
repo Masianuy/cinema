@@ -2,7 +2,7 @@ import { Box, Button, ButtonGroup, List, ListItem, ListItemText } from '@mui/mat
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllMoviesAction } from '../../store/actions/moviesActions';
+import { deleteMovieAction, getAllMoviesAction } from '../../store/actions/moviesActions';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
@@ -16,7 +16,11 @@ function MovieList() {
   useEffect(() => {
     dispatch(getAllMoviesAction())
   }, [dispatch])
-  
+   
+  const onDelete = (id) => {
+    dispatch(deleteMovieAction(id))
+  }
+
   return (
     <Box style={{padding: "0 20px"}}>
       <List>
@@ -27,11 +31,10 @@ function MovieList() {
             </ListItemText>
             <ButtonGroup variant='contained'>
               <Button startIcon={<EditRoundedIcon />} size="large">
-                <Link to={`${movie.id}/edit`}>Edit</Link>
+                <Link to={`new/${movie.id}`}>Edit</Link>
               </Button>
-              <Button startIcon={<DeleteForeverRoundedIcon />} size="large">
-                <Link to={`${movie.id}`}>Delete</Link>
-              </Button>
+              <Button startIcon={<DeleteForeverRoundedIcon />} size="large"
+                onClick={() => onDelete(movie.id)}>Delete</Button>
             </ButtonGroup>
           </ListItem>))}
       </List>

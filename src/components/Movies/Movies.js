@@ -7,7 +7,7 @@ import MovieList from './MovieList';
 
 function Movies() {
   return (
-    <Box style={{ textAlign: "center" }}>
+    <Box>
       <Button variant="contained" size="large" color="secondary" style={{marginBottom: "20px", padding: "7px 30px", fontSize: "16px"}}>
           <Link to="new" style={{textAlign: "centre"}}>New</Link>
       </Button>
