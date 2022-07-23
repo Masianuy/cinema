@@ -9,8 +9,7 @@ function MovieForm() {
 
   const {id} = useParams();
   const {movieList: {movies}} = useSelector(state => state);
-  const editingMovie = movies.filter((movie) => (movie.id === parseInt(id)));
-  // console.log(editingMovie)
+  const editingMovie = movies.find((movie) => (movie.id === parseInt(id)));
 
   const initialValues = {
     title: '',
@@ -38,6 +37,7 @@ function MovieForm() {
   })
 
   const movieForm = (props) => {
+    console.log(editingMovie);
     return (
       <Form style={{width: "80%", margin: "auto"}}>
         <Field as={TextField} name="title"
@@ -74,7 +74,7 @@ function MovieForm() {
   return (
     <Formik 
       onSubmit={onFormikSubmit}
-      initialValues = {editingMovie ? editingMovie[0] : initialValues}
+      initialValues = {editingMovie ? editingMovie : initialValues}
       validationSchema={shemaForm}
     >
       {movieForm}
