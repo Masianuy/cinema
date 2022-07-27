@@ -1,13 +1,13 @@
-import { Divider, Grid, Typography } from '@mui/material';
+import { Divider, Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { emptyStudio } from '../../constants';
 
-function StudioItem() {
+function StudioItem({studios}) {
 
   const {id} = useParams();
-  const {studioList: {studios}} = useSelector(state => state);
-  const currentStudio = studios.find((studio => studio.id === parseInt(id)));
+  const getStudioOnId = studios.find((studio => studio.id === parseInt(id)));
+  const currentStudio = getStudioOnId ? getStudioOnId : emptyStudio;
 
   return (
     <>
@@ -17,9 +17,15 @@ function StudioItem() {
         <Grid item xs={6}>
           <img src={currentStudio.logo} alt={currentStudio.title} width="100%"/>
         </Grid>
-        <Grid style={{margin: "auto"}} item xs={6}>
-          <Typography variant="h5" gutterBottom component="p">Location: {currentStudio.location}</Typography>
-          <Typography variant="h5" gutterBottom component="p">Foundation Year: {currentStudio.foundationYear}</Typography>
+        <Grid style={{margin: "auto", paddingLeft: "20px"}} item xs={6}>
+          <Stack direction="row" mb={2} justifyContent="space-between">
+            <Typography variant="h5" gutterBottom component="p">Location:</Typography>
+            <Typography component="p">{currentStudio.location}</Typography>
+          </Stack>
+          <Stack direction="row" mb={2} justifyContent="space-between">
+            <Typography variant="h5" gutterBottom component="p">Foundation Year:</Typography>
+            <Typography component="p" >{currentStudio.foundationYear}</Typography>
+          </Stack>
         </Grid>
       </Grid>
     </>

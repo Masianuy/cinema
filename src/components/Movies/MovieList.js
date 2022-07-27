@@ -1,21 +1,15 @@
 import { Box, Button, ButtonGroup, List, ListItem, ListItemText } from '@mui/material';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteMovieAction, getAllMoviesAction } from '../../store/actions/moviesActions';
+import { deleteMovieAction } from '../../store/actions/moviesActions';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
 
-function MovieList() {
+function MovieList({movies}) {
 
   const dispatch = useDispatch();
-
-  const {movieList: {movies}} = useSelector(state => state);
-
-  useEffect(() => {
-    dispatch(getAllMoviesAction())
-  }, [dispatch])
    
   const onDelete = (id) => {
     dispatch(deleteMovieAction(id))
@@ -34,9 +28,10 @@ function MovieList() {
                 <Link to={`new/${movie.id}`}>Edit</Link>
               </Button>
               <Button startIcon={<DeleteForeverRoundedIcon />} size="large"
-                onClick={() => onDelete(movie.id)}>Delete</Button>
+                onClick={() => onDelete(movie.id)} sx={{backgroundColor: "btnDelete.main", '&:hover': {backgroundColor: 'btnDelete.dark'}}}>Delete</Button>
             </ButtonGroup>
-          </ListItem>))}
+          </ListItem>
+          ))}
       </List>
     </Box>
   )

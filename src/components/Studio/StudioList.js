@@ -1,28 +1,20 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {getAllStudiosAction} from '../../store/actions/studiosActions';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import {deleteStudioAction } from '../../store/actions/studiosActions';
 
-import { Box, Button, styled, ButtonGroup, List, ListItem, ListItemText } from '@mui/material';
+import { Box, Button, ButtonGroup, List, ListItem, ListItemText } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
-function StudioList() {
+function StudioList({studios}) {
 
-  const ButtonDelete = styled(Button)(({theme}) => ({
-    backgroundColor: theme.palette.btnDelete.main,
-    "&hover": {
-      backgroundColor: theme.palette.btnDelete.dark,
-    }
-  }));
-
-  const {studioList: {studios}} = useSelector(state => state);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllStudiosAction())
-  }, [dispatch])
+  const onDelete = (id) => {
+    dispatch(deleteStudioAction(id));
+  }
 
   return (
     <Box style={{padding: "0 20px"}}>
@@ -34,11 +26,10 @@ function StudioList() {
             </ListItemText>
             <ButtonGroup variant='contained'>
               <Button startIcon={<EditRoundedIcon />} size="large">
-                <Link to={`${studio.id}/edit`}>Edit</Link>
+                <Link to={`new/${studio.id}`}>Edit</Link>
               </Button>
-              <ButtonDelete startIcon={<DeleteForeverRoundedIcon />} size="large">
-                <Link to={`${studio.id}`}>Delete</Link>
-              </ButtonDelete>
+              <Button startIcon={<DeleteForeverRoundedIcon />} size="large"
+                onClick={() => onDelete(studio.id)}>Delete</Button>
             </ButtonGroup>
           </ListItem>))}
       </List>

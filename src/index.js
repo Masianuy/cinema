@@ -18,23 +18,31 @@ const theme = createTheme({
     secondary: {
       main: "#D9E6EC",
       light: "#EBFFBF",
-      dark: "#7FA8CC",
+      dark: "#96B395",
     },
     btnDelete: {
       main: "#F9F6F5",
-      dark: "#D29E8A",
+      dark: "#CBB8AF",
     }
   },
+  typography: {
+    fontSize: 16,
+    letterSpacing: "0.05em",
+    textLink: {
+      fontSize: 16,
+      fontWeight: 500,
+    },
+  }
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <React.StrictMode>
+    <React.StrictMode>
+      <ThemeProvider theme={theme}>
         <App />
-      </React.StrictMode>
-    </ThemeProvider>
+      </ThemeProvider>
+    </React.StrictMode>
   </Provider>
 );
 reportWebVitals();

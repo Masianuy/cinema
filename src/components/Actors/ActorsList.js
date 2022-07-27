@@ -1,20 +1,19 @@
 import { Box, Button, ButtonGroup, List, ListItem, ListItemText } from '@mui/material';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllActorsAction } from '../../store/actions/actorsActions';
+import { deleteActorAction } from '../../store/actions/actorsActions';
 
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
-function ActorsList() {
-
-  const { actorList: {actors}} = useSelector(state => state);
+function ActorsList({actors}) {
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllActorsAction())
-  }, [dispatch]);
+
+  const onDelete = (id) => {
+    dispatch(deleteActorAction(id));
+  }
 
   return (
     <Box style={{padding: "0 20px"}}>
@@ -26,11 +25,10 @@ function ActorsList() {
             </ListItemText>
             <ButtonGroup variant='contained'>
               <Button startIcon={<EditRoundedIcon />} size="large">
-                <Link color="theme.edit" className='edit-link' to={`${actor.id}/edit`}>Edit</Link>
+                <Link color="theme.edit" className='edit-link' to={`new/${actor.id}`}>Edit</Link>
               </Button>
-              <Button startIcon={<DeleteForeverRoundedIcon />} size="large">
-                <Link to={`${actor.id}`}>Delete</Link>
-              </Button>
+              <Button startIcon={<DeleteForeverRoundedIcon />} size="large"
+                onClick={() => onDelete(actor.id)}>Delete</Button>
             </ButtonGroup>
           </ListItem>))}
         </List>

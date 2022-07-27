@@ -1,22 +1,30 @@
 import { Box, Button } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
-import MovieForm from './MovieForm';
+import { getAllMoviesAction } from '../../store/actions/moviesActions';
 import MovieItem from './MovieItem';
 import MovieList from './MovieList';
 
 function Movies() {
+
+  const {movieList: {movies}} = useSelector(state => state);
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllMoviesAction())
+  }, [dispatch]);
+
   return (
     <Box>
-      <Button variant="contained" size="large" color="secondary" style={{marginBottom: "20px", padding: "7px 30px", fontSize: "16px"}}>
-          <Link to="new" style={{textAlign: "centre"}}>New</Link>
+      <Button variant="contained" size="large" sx={{backgroundColor: "secondary.dark", p: "7px 30px", mb: 2, fontSize: "16px"}}>
+        <Link style={{color: "white"}} to="new">New</Link>
       </Button>
       <Routes>
-        <Route path='new' element={<MovieForm />} />
-        <Route path='new/:id' element={<MovieForm />} />
-        <Route path=':id' element={<MovieItem />} />
-        <Route path='/' element={<MovieList />} />
-        <Route path='new' element={<Navigate to='new/:id' />} />
+        <Route path=':id' element={<MovieItem movies={movies}/>} />
+        <Route path='/' element={<MovieList movies={movies} />} />
+        <Route path='new' element={<Navigate to='/movies/new/:id' />} />
       </Routes>
     </Box>
   )

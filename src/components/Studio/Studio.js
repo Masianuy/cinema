@@ -1,23 +1,31 @@
 import { Button, Box } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, Route, Routes, Navigate } from 'react-router-dom';
 import StudioList from './StudioList';
 import StudioItem from './StudioItem';
-import StudioForm from './StudioForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllStudiosAction } from '../../store/actions/studiosActions';
 
 
 function Studio() {
+  
+  const {studioList: {studios}} = useSelector(state => state);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllStudiosAction())
+  }, [dispatch]);
+
   return (
     <Box>
-    <Button variant="contained" size="large" color="secondary" style={{marginBottom: "20px", padding: "7px 30px", fontSize: "16px"}}>
-        <Link to="new" style={{textAlign: "centre"}}>New</Link>
+      <Button variant="contained" size="large" sx={{backgroundColor: "secondary.dark", p: "7px 30px", mb: 2, fontSize: "16px"}}>
+        <Link style={{color: "white"}} to="new">New</Link>
       </Button>
       <Routes>
-        <Route path='new' element={<StudioForm />} />
-        <Route path='new/:id' element={<StudioForm />} />
-        <Route path=':id' element={<StudioItem />} />
-        <Route path='/' element={<StudioList />} />
-        <Route path='new' element={<Navigate to='new/:id' />} />
+        <Route path=':id' element={<StudioItem studios={studios} />} />
+        <Route path='/' element={<StudioList studios={studios} />} />
+        <Route path='new' element={<Navigate to='/studios/new/:id' />} />
       </Routes>
     </Box>
   )

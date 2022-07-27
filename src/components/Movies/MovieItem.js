@@ -1,13 +1,13 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import { Avatar, Divider, Grid, Typography } from '@mui/material';
+import { Avatar, Divider, Grid, Stack, Typography } from '@mui/material';
+import { emptyMovie } from '../../constants';
 
-function MovieItem() {
+function MovieItem({movies}) {
 
   const {id} = useParams();
-  const {movieList: {movies}} = useSelector(state => state);
-  const currentMovie = movies.find((movie) => movie.id === parseInt(id));
+  const getMovieonId = movies.find((movie) => movie.id === parseInt(id));
+  const currentMovie = getMovieonId ? getMovieonId : emptyMovie;
 
   return (
     <>
@@ -18,9 +18,30 @@ function MovieItem() {
           <Avatar sx={{ width: "300px", height: "300px" }} src={currentMovie.poster} alt={currentMovie.title}/>
         </Grid>
         <Grid style={{margin: "auto"}} item xs={6}>
-          <Typography variant="h5" gutterBottom component="p">Director: {currentMovie.directorId}</Typography>
-          <Typography variant="h5" gutterBottom component="p">Actors: {currentMovie.actorId}</Typography>
-          <Typography variant="h5" gutterBottom component="p">Studio: {currentMovie.studioId}</Typography>
+          <Stack direction="row" mb={2} justifyContent="space-between">
+            <Stack>
+              <Typography variant="h5" gutterBottom component="p">Director:</Typography>
+            </Stack>
+            <Stack>
+              {currentMovie.directors.map(director => <Typography component="p" key={director}>{director}</Typography>)}
+            </Stack>
+          </Stack>
+          <Stack direction="row" mb={2} justifyContent="space-between">
+            <Stack>
+              <Typography variant="h5" gutterBottom component="h5">Actors:</Typography>
+            </Stack>
+            <Stack>
+              {currentMovie.actors.map(actor => <Typography component="p" key={actor}>{actor}</Typography>)}
+            </Stack>
+          </Stack>
+          <Stack direction="row" mb={2} justifyContent="space-between">
+            <Stack>
+              <Typography variant="h5" gutterBottom component="p">Studio:</Typography>
+            </Stack>
+            <Stack>
+              <Typography component="p">{currentMovie.studios}</Typography>
+            </Stack>
+          </Stack>
         </Grid>
       </Grid>
     </>

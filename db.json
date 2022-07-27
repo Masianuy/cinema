@@ -2,7 +2,12 @@
   "actors": [
     {
       "id": 1,
-      "movies": ["Indiana Johns", "The star wars", "Patriot Games"],
+      "movies": [
+        "Indiana Johns",
+        "The star wars",
+        "Patriot Games",
+        "Gentelmens of fortune"
+      ],
       "fullName": "Harrison Ford",
       "birthYear": "1942",
       "nationality": "USA",
@@ -10,7 +15,12 @@
     },
     {
       "id": 2,
-      "movies": ["Sleepy Hollow", "Pirates of the Caribbean", "The Tourist"],
+      "movies": [
+        "Sleepy Hollow",
+        "Pirates of the Caribbean",
+        "The Tourist",
+        "Alice in Wonderland"
+      ],
       "fullName": "Johnny Depp",
       "birthYear": "1963",
       "nationality": "USA",
@@ -18,7 +28,11 @@
     },
     {
       "id": 3,
-      "movies": ["Alien", "Avatar", "Aliens"],
+      "movies": [
+        "Alien",
+        "Avatar",
+        "Aliens"
+      ],
       "fullName": "Sigourney Weaver",
       "birthYear": "1949",
       "nationality": "USA",
@@ -28,7 +42,11 @@
   "directors": [
     {
       "id": 1,
-      "movies": ["Indiana Johns", "Schindler's List", "Saving Private Ryan"],
+      "movies": [
+        "Indiana Johns",
+        "Schindler's List",
+        "Saving Private Ryan"
+      ],
       "fullName": "Steven Spielberg",
       "birthYear": "1946",
       "nationality": "USA",
@@ -36,7 +54,11 @@
     },
     {
       "id": 2,
-      "movies": ["Alien", "Gladiator", "Robin Hood"],
+      "movies": [
+        "Alien",
+        "Gladiator",
+        "Robin Hood"
+      ],
       "fullName": "Ridley Scott",
       "birthYear": "1937",
       "nationality": "UK",
@@ -44,46 +66,78 @@
     },
     {
       "id": 3,
-      "movies": ["Rambo", "Terminator", "Avatar"],
+      "movies": [
+        "Rambo",
+        "Terminator",
+        "Avatar"
+      ],
       "fullName": "James Cameron",
       "birthYear": "1954",
       "nationality": "Canada",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/James_Cameron_by_Gage_Skidmore.jpg/240px-James_Cameron_by_Gage_Skidmore.jpg"
+    },
+    {
+      "id": 5
     }
-    
   ],
   "movies": [
     {
-      "id": 1,
-      "title": "Indiana Johns",
-      "directorId": 1,
-      "actorId": 1,
-      "studioId": 1,
-      "poster": "https://upload.wikimedia.org/wikipedia/ru/thumb/8/8b/IJandCrystalSkull.jpg/220px-IJandCrystalSkull.jpg"
-    },
-    {
       "id": 2,
       "title": "Alien",
-      "directorId": 2,
-      "actorId": 3,
-      "studioId": 2,
+      "directors": [
+        "Ridley Scott"
+      ],
+      "actors": [
+        "Sigourney Weaver"
+      ],
+      "studios": [
+        "20th Century Studios, Inc."
+      ],
       "poster": "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/Alien_movie_poster.jpg/232px-Alien_movie_poster.jpg"
     },
     {
       "id": 3,
       "title": "Aliens",
-      "directorId": 3,
-      "actorId": 2,
-      "studioId": 2,
+      "directors": [
+        "James Cameron"
+      ],
+      "actors": [
+        "Sigourney Weaver"
+      ],
+      "studios": [
+        "20th Century Studios, Inc."
+      ],
       "poster": "https://upload.wikimedia.org/wikipedia/ru/thumb/f/fb/Aliens_poster.jpg/196px-Aliens_poster.jpg"
     },
     {
       "id": 4,
       "title": "Pirates of the Caribbean:",
-      "directorId": 3,
-      "actorId": 3,
-      "studioId": 2,
+      "directors": [
+        "Gregor (Gore) Verbinski"
+      ],
+      "actors": [
+        "Johnny Depp",
+        "Orlando Bloom"
+      ],
+      "studios": [
+        "Walt Disney Pictures"
+      ],
       "poster": "https://upload.wikimedia.org/wikipedia/ru/thumb/7/79/Pirates-of-the-Caribbean-The-Curse-of-the-Black-Pearl-.jpg/201px-Pirates-of-the-Caribbean-The-Curse-of-the-Black-Pearl-.jpg"
+    },
+    {
+      "id": 165849,
+      "title": "The Lord Of The Rings",
+      "directors": [
+        "Peter Jackson"
+      ],
+      "actors": [
+        "Elijah Wood",
+        "Ian McKellen"
+      ],
+      "studios": [
+        "New Line Cinema "
+      ],
+      "poster": "https://upload.wikimedia.org/wikipedia/ru/thumb/0/08/The_Lord_of_the_Rings._The_Fellowship_of_the_Ring_%E2%80%94_movie.jpg/203px-The_Lord_of_the_Rings._The_Fellowship_of_the_Ring_%E2%80%94_movie.jpg"
     }
   ],
   "studios": [
@@ -92,7 +146,7 @@
       "title": "Lucasfilm Ltd. LLC",
       "location": "San Francisco",
       "foundationYear": "1971",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Lucasfilm_logo.svg/800px-Lucasfilm_logo.svg.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Lucasfilm_logo.svg/250px-Lucasfilm_logo.svg.png"
     },
     {
       "id": 2,
@@ -102,5 +156,4 @@
       "logo": "https://upload.wikimedia.org/wikipedia/ru/thumb/5/5e/20th_Century_Studios.svg/250px-20th_Century_Studios.svg.png"
     }
   ]
-
 }
