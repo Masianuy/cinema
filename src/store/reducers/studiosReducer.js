@@ -16,11 +16,11 @@ export default function studiosReducer(state = initialState, {type, payload}) {
         isFetching: false};
       
     case ACTIONS_TYPES.PUT_STUDIO_SUCCESS:
-      return {...state, studios: [state.studios.map((studio) => studio.id !== payload.id ? payload : studio)], 
+      return {...state, studios: [state.studios.map((studio) => studio.id !== payload.id ? studio : payload)], 
         isFetching: false};
       
     case ACTIONS_TYPES.DELETE_STUDIO_SUCCESS:
-      return {...state, studios: [state.studios.filter((studio) => studio.id !== payload)], 
+      return {...state, studios: state.studios.filter((studio) => studio.id !== payload), 
         isFetching: false};
 
     case ACTIONS_TYPES.GET_STUDIOS_REQUEST:

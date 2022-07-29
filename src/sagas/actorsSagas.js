@@ -28,9 +28,9 @@ export function* getAllActorsSaga() {
 export function* createActorSaga({payload}) {
   yield put(createActorRequest());
   try {
-    const actors = yield service.post(`/actors`, payload)
+    const newActor = yield service.post(`/actors`, payload)
       .then(({data}) => data)
-    yield put(createActorSuccess(actors))
+    yield put(createActorSuccess(newActor))
   } catch (error) {
     yield put(createActorError(error))
   }
@@ -39,9 +39,9 @@ export function* createActorSaga({payload}) {
 export function* updateActorSaga({payload}) {
   yield put(updateActorRequest());
   try {
-    const actors = yield service.put(`/actors${payload.id}`, payload)
+    const updateActors = yield service.put(`actors/${payload.id}`, payload)
       .then(({data}) => data)
-    yield put(updateActorSuccess(actors))
+    yield put(updateActorSuccess(updateActors))
   } catch (error) {
     yield put(updateActorError(error))
   }
@@ -50,7 +50,7 @@ export function* updateActorSaga({payload}) {
 export function* deleteActorSaga({payload}) {
   yield put(deleteActorRequest());
   try {
-    yield service.delete(`/actors${payload}`)
+    yield service.delete(`actors/${payload}`)
     yield put(deleteActorSuccess(payload))
   } catch (error) {
     yield put(deleteActorError(error))

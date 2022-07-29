@@ -49,7 +49,7 @@ export function *updateStudioSaga({payload}) {
 export function *deleteStudioSaga({payload}) {
   yield put(deleteStudioRequest());
   try {
-    yield service.delete(`/studio/${payload}`)
+    yield service.delete(`studio/${payload}`)
     yield put(deleteStudioSuccess(payload))
   } catch (error) {
     yield put(deleteStudioError(error));

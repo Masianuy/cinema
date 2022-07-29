@@ -16,11 +16,12 @@ export default function actorsReducer(state = initialState, {type, payload}) {
         isFetching: false};
 
     case ACTIONS_TYPES.PUT_ACTOR_SUCCESS:
-      return {...state, actors: [...state, state.actors.map((actor) => actor.id !== payload.id ? payload : actor)], 
+      return {...state, 
+        actors: state.actors.map((actor) => actor.id !== payload.id ? actor : payload), 
         isFetching: false};
 
     case ACTIONS_TYPES.DELETE_ACTOR_SUCCESS:
-      return {...state, actors: [state.actors.filter((actor) => actor.id !== payload)],
+      return {...state, actors: state.actors.filter((actor) => actor.id !== payload),
         isFetching: false};
 
     case ACTIONS_TYPES.GET_ACTORS_REQUEST:

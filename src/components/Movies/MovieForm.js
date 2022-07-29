@@ -40,32 +40,28 @@ function MovieForm() {
           {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
           <ErrorMessage name="title"/>
         <Field as={TextField} name="directors"
-          fullWidth margin="dense" required 
-          label="Director" variant="outlined" />
+          fullWidth margin="dense" label="Director" variant="outlined" />
           {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
           <ErrorMessage name="directors"/>
         {/* <FieldArray name="actors"> */}
         <Field as={TextField} name="actors"
-          fullWidth margin="dense" required 
-          label="Actor" variant="outlined" />
+          fullWidth margin="dense" label="Actor" variant="outlined" />
           {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
           <ErrorMessage name="actors"/>
         {/* </FieldArray> */}
         <Field as={TextField} name="studios"
-          fullWidth margin="dense" required
-          label="Studio" variant="outlined" />
+          fullWidth margin="dense" label="Studio" variant="outlined" />
           {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
           <ErrorMessage name="studios"/>
-        <Field as={TextField} name="poster"
-          fullWidth multiline margin="dense" required 
+        <Field as={TextField} name="poster" fullWidth multiline margin="dense"
           label="Poster" variant="outlined" />
           {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
           <ErrorMessage name="poster"/>
-          <ButtonGroup variant='contained' size="large" color="primary" sx={{mt: 2}}>
-            <Button type="submit" disabled={!props.isValid}>Save</Button>
-            <Button type="button"onClick={goHome}>Return</Button>
-            <Button type="reset">Reset</Button>
-          </ButtonGroup>
+        <ButtonGroup variant='contained' size="large" color="primary" sx={{mt: 2}}>
+          <Button type="submit" disabled={!props.isValid}>Save</Button>
+          <Button type="button"onClick={goHome}>Return</Button>
+          <Button type="reset">Reset</Button>
+        </ButtonGroup>
       </Form>
     )
   }

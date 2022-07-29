@@ -24,31 +24,6 @@ export const getAllDirectorsError= (payload) => {
   }
 }
 
-//Get by id
-export const getDirectorAction = (payload) => {
-  return {
-    type: ACTIONS_TYPES.GET_DIRECTOR_ACTION,
-    payload
-  }
-}
-export const getDirectorRequest= () => {
-  return {
-    type: ACTIONS_TYPES.GET_DIRECTOR_REQUEST
-  }
-}
-export const getDirectorSuccess = (payload) => {
-  return {
-    type: ACTIONS_TYPES.GET_DIRECTOR_SUCCESS,
-    payload
-  }
-}
-export const getDirectorError= (payload) => {
-  return {
-    type: ACTIONS_TYPES.GET_DIRECTOR_ERROR,
-    payload
-  }
-}
-
 //Create
 export const createDirectorAction = (payload) => {
   return {

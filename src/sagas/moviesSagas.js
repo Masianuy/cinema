@@ -9,9 +9,6 @@ import {  createMovieError,
           getAllMoviesError,
           getAllMoviesRequest,
           getAllMoviesSuccess,
-          getMovieError,
-          getMovieRequest,
-          getMovieSuccess,
           updateMovieError,
           updateMovieRequest,
           updateMovieSuccess } from '../store/actions/moviesActions';
@@ -24,17 +21,6 @@ export function* getAllMoviesSaga() {
       yield put(getAllMoviesSuccess(movies))
   } catch (error) {
     yield put(getAllMoviesError(error))
-  }
-}
-
-export function* getMovieSaga({payload}) {
-  yield put(getMovieRequest());
-  try {
-    const movie = yield service.get(`movies/${payload}`)
-      .then(({data}) => data);
-    yield put(getMovieSuccess(movie))
-  } catch (error) {
-    yield put(getMovieError(error))
   }
 }
 

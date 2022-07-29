@@ -24,31 +24,6 @@ export const getAllMoviesError = (payload) => {
   }
 }
 
-//Get by id
-export const getMovieAction = (payload) => {
-  return {
-    type: ACTIONS_TYPES.GET_MOVIE_ACTION,
-    payload
-  }
-} 
-export const getMovieRequest = () => {
-  return {
-    type: ACTIONS_TYPES.GET_MOVIE_REQUEST,
-  }
-} 
-export const getMovieSuccess = (payload) => {
-  return {
-    type: ACTIONS_TYPES.GET_MOVIE_SUCCESS,
-    payload
-  }
-} 
-export const getMovieError = (payload) => {
-  return {
-    type: ACTIONS_TYPES.GET_MOVIE_ERROR,
-    payload
-  }
-}
-
 //Create
 export const createMovieAction = (payload) => {
   return {

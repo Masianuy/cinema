@@ -15,12 +15,12 @@ export default function directorsReducer(state = initialState, {type, payload}) 
       return {...state, directors: [...state.directors, payload], isFetching: false};
 
     case ACTIONS_TYPES.PUT_DIRECTOR_SUCCESS:
-      return {...state, directors: [...state.directors.map((director) => director.id !== payload.id ? payload : director)],
+      return {...state, directors: state.directors.map((director) => director.id !== payload.id ? director : payload),
         isFetching: false};
 
     case ACTIONS_TYPES.DELETE_DIRECTOR_SUCCESS:
       return{...state, 
-        directors: [...state.directors.filter((director) => director.id !== payload)] , 
+        directors: state.directors.filter((director) => director.id !== payload), 
         isFetching: false}
 
     case ACTIONS_TYPES.GET_DIRECTORS_REQUEST:

@@ -24,31 +24,6 @@ export const getAllActorsError = (payload) => {
   }
 }
 
-//Get by id
-export const getActorAction = (payload) => {
-  return {
-    type: ACTIONS_TYPES.GET_ACTOR_ACTION,
-    payload
-  }
-}
-export const getActorRequest = () => {
-  return {
-    type: ACTIONS_TYPES.GET_ACTOR_REQUEST,
-  }
-}
-export const getActorSuccess = (payload) => {
-  return {
-    type: ACTIONS_TYPES.GET_ACTOR_SUCCESS,
-    payload
-  }
-}
-export const getActorError = (payload) => {
-  return {
-    type: ACTIONS_TYPES.GET_ACTOR_ERROR,
-    payload
-  }
-}
-
 //Create
 export const createActorAction = (payload) => {
   return {

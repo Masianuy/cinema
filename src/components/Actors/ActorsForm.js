@@ -30,15 +30,7 @@ function ActorsForm() {
     fullName: Yup.string()
       .required('Field Full name can`t be empty'),
     birthYear: Yup.number()
-      .required('Field Birth year can`t be empty')
-      .negative('Field Birth year can`t be negative')
-      .moreThan(1800, `Year can\`t be less then 1800`),
-    nationality: Yup.string()
-      .required('Field nationality can`t be empty'),
-    image: Yup.string()
-      .required('Field image can`t be empty'),
-    movies: Yup.string()
-      .required('Field movies can`t be empty'),
+      .moreThan(1800, `Year can\`t be less then 1800`)
   })
 
   const actorsForm = (props) => {
@@ -51,33 +43,29 @@ function ActorsForm() {
           <ErrorMessage name="fullName">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
         <Stack mb={2}>
-          <Field name="birthYear" as={TextField}
-            required fullWidth margin="dense"
+          <Field name="birthYear" as={TextField} fullWidth margin="dense"
             label="Birth year" variant="outlined" />
           <ErrorMessage name="birthYear">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
         <Stack mb={2}>
-          <Field name="nationality" as={TextField}
-            required fullWidth margin="dense"
+          <Field name="nationality" as={TextField} fullWidth margin="dense"
             label="Nationality" variant="outlined" />
           <ErrorMessage name="nationality">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
-        <Field as={TextField} name="movies"
-          fullWidth margin="dense" required
+        <Field as={TextField} name="movies" fullWidth margin="dense" 
           label="Movies" variant="outlined" />
-          {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
-          <ErrorMessage name='movies' />
-          <Stack mb={2}>
-            <Field name="image" as={TextField}
-              required fullWidth margin="dense"
-              label="Image" variant="outlined" />
-            <ErrorMessage name="image">{msg => <div>{msg}</div>}</ErrorMessage>
-          </Stack>
-          <ButtonGroup variant='contained' size="large" color="primary" sx={{mt: 2}}>
-            <Button type="submit" disabled={!props.isValid}>Save</Button>
-            <Button type="button"onClick={goHome}>Return</Button>
-            <Button type="reset">Reset</Button>
-          </ButtonGroup>
+        {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
+        <ErrorMessage name='movies' />
+        <Stack mb={2}>
+          <Field name="image" as={TextField} fullWidth margin="dense"
+            label="Image" variant="outlined" />
+          <ErrorMessage name="image">{msg => <div>{msg}</div>}</ErrorMessage>
+        </Stack>
+        <ButtonGroup variant='contained' size="large" color="primary" sx={{mt: 2}}>
+          <Button type="submit" disabled={!props.isValid}>Save</Button>
+          <Button type="button"onClick={goHome}>Return</Button>
+          <Button type="reset">Reset</Button>
+        </ButtonGroup>
       </Form>
     )
   }

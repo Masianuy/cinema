@@ -3,15 +3,15 @@ export const BASE_URL = 'http://localhost:5000';
 export const emptyMovie = {
   "id": null,
   "title": "",
-  "directors": [],
-  "actors": [],
-  "studios": [],
+  "directors": [''],
+  "actors": [''],
+  "studios": [''],
   "poster": ""
 };
 
 export const emptyActor = {
   "id": null,
-  "movies": [],
+  "movies": [''],
   "fullName": "",
   "birthYear": "",
   "nationality": "",
@@ -20,7 +20,7 @@ export const emptyActor = {
 
 export const emptyDirector= {
   "id": null,
-  "movies": [],
+  "movies": [''],
   "fullName": "",
   "birthYear": "",
   "nationality": "",

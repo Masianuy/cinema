@@ -29,11 +29,6 @@ function StudioForm() {
     title: Yup.string()
       .required('Field Title can`t be empty'),
     foundationYear: Yup.number()
-      .required('Field Foundation Year can`t be empty'),
-    location: Yup.string()
-      .required('Field Location can`t be empty'),
-    logo: Yup.string()
-      .required('Field Logo can`t be empty'),
   })
 
   const studioForm = (props) => {
@@ -46,20 +41,17 @@ function StudioForm() {
           <ErrorMessage name="title">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
         <Stack mb={2}>
-          <Field name="foundationYear" as={TextField}
-            required fullWidth margin="dense"
+          <Field name="foundationYear" as={TextField} fullWidth margin="dense"
             label="Foundation Year" variant="outlined" />
           <ErrorMessage name="foundationYear">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
         <Stack mb={2}>
-          <Field name="location" as={TextField}
-            required fullWidth margin="dense"
+          <Field name="location" as={TextField} fullWidth margin="dense"
             label="Location" variant="outlined" />
           <ErrorMessage name="location">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
         <Stack mb={2}>
-          <Field name="logo" as={TextField}
-            required fullWidth margin="dense"
+          <Field name="logo" as={TextField} fullWidth margin="dense"
             label="Logo" variant="outlined" />
           <ErrorMessage name="logo">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
