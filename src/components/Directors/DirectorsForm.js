@@ -1,4 +1,4 @@
-import { Stack, TextField, Button, ButtonGroup, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Stack, TextField, Button, ButtonGroup } from '@mui/material';
 import { ErrorMessage, Field, Form, Formik, FieldArray } from 'formik';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -66,7 +66,7 @@ function DirectorsForm() {
             {({push, remove, form: {values: {movies}}}) => {
               return (
                 <Stack spacing={2}>
-                  {movies.map((movie, index) =>  (
+                  {movies.map((movie, index) => (
                     <Stack key={index} direction="row" spacing={2}>
                       <Field name={`movies[${index}]`} as={TextField} fullWidth
                         margin="dense" variant="outlined"></Field>
@@ -84,7 +84,6 @@ function DirectorsForm() {
         <Stack mb={2}>
           <Field name="image" as={TextField} fullWidth margin="dense"
             label="Image" variant="outlined" />
-          <ErrorMessage name="image">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
         <ButtonGroup variant='contained' size="large" color="primary" sx={{mt: 2}}>
           <Button type="submit" disabled={!props.isValid}>Save</Button>

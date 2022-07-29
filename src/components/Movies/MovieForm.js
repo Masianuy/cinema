@@ -1,11 +1,13 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
-import { TextField, Button, ButtonGroup } from '@mui/material';
+import { TextField, Button, ButtonGroup, Stack } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createMovieAction, updateMovieAction } from '../../store/actions/moviesActions';
 import {emptyMovie} from '../../constants';
+import AddIcon from '@mui/icons-material/Add';
+import ClearIcon from '@mui/icons-material/Clear';
 
 function MovieForm() {
 
@@ -39,24 +41,71 @@ function MovieForm() {
           label="Title" variant="outlined" />
           {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
           <ErrorMessage name="title"/>
-        <Field as={TextField} name="directors"
-          fullWidth margin="dense" label="Director" variant="outlined" />
-          {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
-          <ErrorMessage name="directors"/>
-        {/* <FieldArray name="actors"> */}
-        <Field as={TextField} name="actors"
-          fullWidth margin="dense" label="Actor" variant="outlined" />
-          {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
-          <ErrorMessage name="actors"/>
-        {/* </FieldArray> */}
-        <Field as={TextField} name="studios"
-          fullWidth margin="dense" label="Studio" variant="outlined" />
-          {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
-          <ErrorMessage name="studios"/>
+        <fieldset style={{padding: "5px 10px"}}>
+          <legend style={{padding: "0 10px", fontSize: "16px", letterSpacing: "0.09em"}}>Directors</legend>
+          <FieldArray name="directors">
+            {({push, remove, form: {values: {directors}}}) => {
+              return (
+                <Stack spacing={2}>
+                  {directors.map((actor, index) => (
+                    <Stack key={index} direction="row" spacing={2}>
+                      <Field name={`directors[${index}]`} as={TextField} fullWidth
+                        margin="dense" variant="outlined"></Field>
+                      {index > 0 && (<Button variant="contained" size="small"
+                        type="button" startIcon={<ClearIcon />} onClick={() => remove(index)} />)}
+                      <Button variant="contained" size="small" type="button" 
+                        startIcon={<AddIcon />} onClick={() => push('')} />
+                    </Stack>
+                  ))}
+                </Stack>
+              )
+            }}
+          </FieldArray>
+        </fieldset>
+        <fieldset style={{padding: "5px 10px"}}>
+          <legend style={{padding: "0 10px", fontSize: "16px", letterSpacing: "0.09em"}}>Actors</legend>
+          <FieldArray name="actors">
+            {({push, remove, form: {values: {actors}}}) => {
+              return (
+                <Stack spacing={2}>
+                  {actors.map((actor, index) => (
+                    <Stack key={index} direction="row" spacing={2}>
+                      <Field name={`actors[${index}]`} as={TextField} fullWidth
+                        margin="dense" variant="outlined"></Field>
+                      {index > 0 && (<Button variant="contained" size="small"
+                        type="button" startIcon={<ClearIcon />} onClick={() => remove(index)} />)}
+                      <Button variant="contained" size="small" type="button" 
+                        startIcon={<AddIcon />} onClick={() => push('')} />
+                    </Stack>
+                  ))}
+                </Stack>
+              )
+            }}
+          </FieldArray>
+        </fieldset>
+        <fieldset style={{padding: "5px 10px"}}>
+          <legend style={{padding: "0 10px", fontSize: "16px", letterSpacing: "0.09em"}}>Studios</legend>
+          <FieldArray name="studios">
+            {({push, remove, form: {values: {studios}}}) => {
+              return (
+                <Stack spacing={2}>
+                  {studios.map((actor, index) => (
+                    <Stack key={index} direction="row" spacing={2}>
+                      <Field name={`studios[${index}]`} as={TextField} fullWidth
+                        margin="dense" variant="outlined"></Field>
+                      {index > 0 && (<Button variant="contained" size="small"
+                        type="button" startIcon={<ClearIcon />} onClick={() => remove(index)} />)}
+                      <Button variant="contained" size="small" type="button" 
+                        startIcon={<AddIcon />} onClick={() => push('')} />
+                    </Stack>
+                  ))}
+                </Stack>
+              )
+            }}
+          </FieldArray>
+        </fieldset>
         <Field as={TextField} name="poster" fullWidth multiline margin="dense"
           label="Poster" variant="outlined" />
-          {props.errors.name && props.touched.name && <div>{props.errors.name}</div>}
-          <ErrorMessage name="poster"/>
         <ButtonGroup variant='contained' size="large" color="primary" sx={{mt: 2}}>
           <Button type="submit" disabled={!props.isValid}>Save</Button>
           <Button type="button"onClick={goHome}>Return</Button>

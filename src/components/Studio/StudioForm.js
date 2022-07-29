@@ -43,17 +43,14 @@ function StudioForm() {
         <Stack mb={2}>
           <Field name="foundationYear" as={TextField} fullWidth margin="dense"
             label="Foundation Year" variant="outlined" />
-          <ErrorMessage name="foundationYear">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
         <Stack mb={2}>
           <Field name="location" as={TextField} fullWidth margin="dense"
             label="Location" variant="outlined" />
-          <ErrorMessage name="location">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
         <Stack mb={2}>
           <Field name="logo" as={TextField} fullWidth margin="dense"
             label="Logo" variant="outlined" />
-          <ErrorMessage name="logo">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
         <ButtonGroup variant='contained' size="large" color="primary" sx={{mt: 2}}>
           <Button type="submit" disabled={!props.isValid}>Save</Button>

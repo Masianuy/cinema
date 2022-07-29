@@ -79,6 +79,38 @@
   ],
   "movies": [
     {
+      "id": 1,
+      "title": "Avatar",
+      "directors": [
+        "James Cameron"
+      ],
+      "actors": [
+        "Will Smith",
+        "Alice Braga",
+        "Charlie Tahan"
+      ],
+      "studios": [
+        "20th Century Studios, Inc."
+      ],
+      "poster": "http://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg"
+    },
+    {
+      "id": 1678,
+      "title": "I Am Legend",
+      "directors": [
+        "Francis Lawrence"
+      ],
+      "actors": [
+        "Sigourney Weaver",
+        "Sam Worthington",
+        "Zoe Saldana"
+      ],
+      "studios": [
+        "20th Century Studios, Inc."
+      ],
+      "poster": "https://flxt.tmsimg.com/assets/p170977_p_v7_ae.jpg"
+    },
+    {
       "id": 2,
       "title": "Alien",
       "directors": [
