@@ -9,8 +9,8 @@ const router = new Router();
 
 router.route('/movies')
 .post(createMovie)
-.get(getMovies)
-.put(updateMovie);
+.put(updateMovie)
+.get(getMovies);
 
 router.route('/movies/:id')
 .get(getOneMovie)

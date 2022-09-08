@@ -5,11 +5,11 @@ class DirectorController {
     try {
       const {full_name, birth_year, death_year, national_id, poster_director} = req.body;
       const newDirector = await db.query(`
-      INSERT INTO directors
-      (full_name, birth_year, death_year, national_id, poster_director)
-      VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-      [full_name, birth_year, death_year, national_id, poster_director]);
-      res.send('Ok');
+        INSERT INTO directors
+        (full_name, birth_year, death_year, national_id, poster_director)
+        VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+        [full_name, birth_year, death_year, national_id, poster_director]);
+      res.json(newDirector.rows[0]);
     } catch (error) {
       console.log(error)
     }
@@ -33,7 +33,7 @@ class DirectorController {
       const director = await db.query(`
       SELECT * FROM directors
       WHERE id=$1`, [id]);
-      res.json(director.rows);
+      res.json(director.rows[0]);
     } catch (error) {
       console.log(error)
     }
@@ -44,9 +44,8 @@ class DirectorController {
       const {full_name, birth_year, death_year, national_id, poster_director} = req.body;
       const director = await db.query(`
         UPDATE directors
-        SET full_name=$1, birth_year=$2, death_year=$3, national_id=$4, poster_director=5
-        WHERE id=$6
-        `,
+        SET full_name=$1, birth_year=$2, death_year=$3, national_id=$4, poster_director=$5
+        WHERE id=$6`,
         [full_name, birth_year, death_year, national_id, poster_director, id]);
       res.json(director.rows[0]);
     } catch (error) {

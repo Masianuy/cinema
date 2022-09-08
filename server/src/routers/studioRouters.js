@@ -8,12 +8,12 @@ const { createStudio,
 const router = new Router();
 
 router.route('/studios')
-.post(createStudio)
 .get(getStudios)
 .put(updateStudio)
+.post(createStudio)
 
 router.route('/studios/:id')
 .get(getStudioById)
 .delete(deleteStudio);
 
-module.exports = router;
+module.exports = router; 

@@ -1,7 +1,7 @@
 import { takeLatest } from 'redux-saga/effects';
 import ACTIONS_TYPES from '../store/actions/actionsTypes';
 import { createActorSaga, deleteActorSaga, getAllActorsSaga, updateActorSaga } from './actorsSagas';
-import { createMovieSaga, deleteMovieSaga, getAllMoviesSaga, updateMoviesSaga } from "./moviesSagas";
+import { createMovieSaga, deleteMovieSaga, getAllMoviesSaga, updateMoviesSaga } from './moviesSagas';
 import { createStudioSaga, deleteStudioSaga, getAllStudiosSaga, updateStudioSaga } from './studiosSagas';
 import { createDirectorSaga, deleteDirectorSaga, getAllDirectorsSaga, updateDirectorSaga } from './directorsSagas';
 

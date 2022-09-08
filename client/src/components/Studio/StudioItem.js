@@ -15,10 +15,10 @@ function StudioItem({studios}) {
       <Typography variant="h2" component="h2" gutterBottom style={{textAlign: "center"}}>{currentStudio.title}</Typography>
       <Divider />
       <Grid container style={{padding: "40px 0"}}>
-        <Grid item xs={6}>
+        <Grid item xl={6} lg={6} md={6} xs={12} mb={6}>
           <img src={currentStudio.logo} alt={currentStudio.title} width="100%"/>
         </Grid>
-        <Grid style={{margin: "auto", paddingLeft: "20px"}} item xs={6}>
+        <Grid style={{margin: "auto", paddingLeft: "20px"}} item xl={6} lg={6} md={6} xs={12}>
           <Stack direction="row" mb={2}>
             <Typography variant="overline" gutterBottom component="p">Location:</Typography>
             <Typography variant="h5">{currentStudio.city}, {currentStudio.country}</Typography>

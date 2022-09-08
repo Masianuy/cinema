@@ -3,12 +3,13 @@ const db = require('../db');
 class ActorController {
   async createActor(req, res) {
     try {
-      const {full_name, birth_year, death_year, poster_actor, national_id} = req.body;
+      const {full_name, birth_year, death_year, national_id, poster_actor} = req.body;
       const newActor = await db.query(`
-      INSERT INTO actors
-      (title, birth_year, death_year, national_id)
-      VALUES ($1, $2, $3, $4, $5) RETURNING *`, [full_name, birth_year, death_year, poster_actor, national_id]);
-      res.send('Ok');
+        INSERT INTO actors
+        (full_name, birth_year, death_year, poster_actor, national_id)
+        VALUES ($1, $2, $3, $4, $5) RETURNING *`, 
+        [full_name, birth_year, death_year, national_id, poster_actor]);
+      res.json(newActor.rows[0]);
     } catch (error) {
       console.log(error)
     }
@@ -31,20 +32,20 @@ class ActorController {
     const id = req.params.id;
     const actor = await db.query(`
       SELECT * FROM actors
-        WHERE id=$1;`, [id])
-    res.json(actor.rows);
+      WHERE id=$1;`, [id])
+    res.json(actor.rows[0]);
   } catch (error) {
     console.log(error)
   }
 
   async updateActor(req, res) {
     try {
-      const {full_name, birth_year, death_year, national_id, id} = req.body;
+      const {full_name, birth_year, death_year, national_id, poster_actor, id} = req.body;
       const updateActor = await db.query(`
-      UPDATE actors
-      SET full_name=$1, birth_year=$2, death_year=$3, poster_actor=$4, national_id=$5
-      WHERE id=$5 RETURNING *
-      `, [full_name, birth_year, death_year, poster_actor, national_id, id]);
+        UPDATE actors
+        SET full_name=$1, birth_year=$2, death_year=$3, poster_actor=$4, national_id=$5
+        WHERE id=$6 RETURNING *`, 
+      [full_name, birth_year, death_year, national_id, poster_actor, id]);
       req.json(updateActor.rows[0]);
     } catch (error) {
       console.log(error)

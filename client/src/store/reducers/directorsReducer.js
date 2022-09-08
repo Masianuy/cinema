@@ -20,7 +20,7 @@ export default function directorsReducer(state = initialState, {type, payload}) 
 
     case ACTIONS_TYPES.DELETE_DIRECTOR_SUCCESS:
       return{...state, 
-        directors: state.directors.filter((director) => director.id !== payload), 
+        directors: state.directors.filter((director) => (director.id !== payload)), 
         isFetching: false}
 
     case ACTIONS_TYPES.GET_DIRECTORS_REQUEST:

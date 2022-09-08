@@ -17,10 +17,10 @@ function DirectorsItem({directors}) {
       <Typography variant="h2" component="h2" gutterBottom style={{textAlign: "center"}}>{director.full_name}</Typography>
       <Divider />
       <Grid container style={{padding: "40px 0"}}>
-        <Grid item xs={6}>
+        <Grid item xl={6} lg={6} md={6} xs={12} mb={6} >
           <Avatar sx={{ width: "300px", height: "300px" }} src={director.poster_director} alt={director.full_name}/>
         </Grid>
-        <Grid style={{margin: "auto"}} item xs={6}>
+        <Grid style={{margin: "auto"}} item xl={6} lg={6} md={6} xs={12}>
           <Stack direction="row" mb={2}>
             <Typography variant="overline" gutterBottom component="h5">Birth Year:</Typography>
             <Typography variant="h6" >{moment(director.birth_year).format('Do MMMM YYYY')}</Typography>

@@ -14,9 +14,9 @@ const PORT= process.env.PORT || 5000;
 
 require('dotenv').config();
 
-app.get('/', (req, res) => {
-  res.send(__dirname + '../public/index.html');
-})
+// app.get('/', (req, res) => {
+//   res.send(__dirname + '../public/index.html');
+// })
 
 app.use('/api', movieRouter)
 app.use('/api', actorRouter)

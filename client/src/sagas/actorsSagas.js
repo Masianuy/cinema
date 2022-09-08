@@ -11,8 +11,7 @@ import {  getAllActorsRequest,
           updateActorSuccess, 
           deleteActorRequest,
           deleteActorSuccess,
-          deleteActorError
- } from '../store/actions/actorsActions';
+          deleteActorError } from '../store/actions/actorsActions';
 
 export function* getAllActorsSaga() {
   yield put(getAllActorsRequest());

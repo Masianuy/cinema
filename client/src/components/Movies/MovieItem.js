@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
-import { Avatar, Divider, Box, Grid, Stack, Typography } from '@mui/material';
+import { Avatar, Divider, Grid, Stack, Typography } from '@mui/material';
 import { emptyMovie } from '../../constants';
 import moment from 'moment';
 
@@ -15,10 +15,10 @@ function MovieItem({movies}) {
       <Typography variant="h2" component="h2" gutterBottom style={{textAlign: "center"}}>{currentMovie.title}</Typography>
       <Divider />
       <Grid container style={{padding: "40px 0"}}>
-        <Grid item xs={6}>
-          <Avatar sx={{ width: "400px", height: "auto", borderRadius: "0px" }} src={currentMovie.poster} alt={currentMovie.title}/>
+        <Grid item xl={6} lg={6} md={6} xs={12} mb={6}>
+          <Avatar sx={{ width: "100%", height: "auto", borderRadius: "0px" }} src={currentMovie.poster} alt={currentMovie.title}/>
         </Grid>
-        <Grid style={{margin: "auto"}} item xs={6}>
+        <Grid style={{margin: "auto"}} item xl={6} lg={6} md={6} xs={12}>
           <Stack direction="row" mb={2}>
             <Stack>
               <Typography variant="overline" gutterBottom component="p">Release year:</Typography>
@@ -31,13 +31,16 @@ function MovieItem({movies}) {
             <Stack>
               <Typography variant="overline" gutterBottom component="h6">Director:</Typography>
             </Stack>
-            {/* <Stack>
-              {currentMovie.directors.map(director => <Typography component="p" key={director}>{director}</Typography>)}
-            </Stack> */}
+            <Stack>
+              <Typography variant="h6">{currentMovie.directors}</Typography>
+            </Stack>
           </Stack>
           <Stack direction="row" mb={2}>
             <Stack>
               <Typography variant="overline" gutterBottom component="h6">Actors:</Typography>
+            </Stack>
+            <Stack>
+              <Typography variant="h6">{currentMovie.actors}</Typography>
             </Stack>
           </Stack>
           <Stack direction="row" mb={2}>

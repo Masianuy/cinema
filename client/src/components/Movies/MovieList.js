@@ -19,7 +19,7 @@ function MovieList({movies}) {
     <Box style={{padding: "0 20px"}}>
       <List>
         {movies.map((movie) => (
-          <ListItem key={movie.title} style={{ display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
+          <ListItem key={movie.id} style={{ display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
             <ListItemText primaryTypographyProps={{fontSize: 20}}>
                 <Link to={`${movie.id}`}>{movie.title}</Link>
             </ListItemText>

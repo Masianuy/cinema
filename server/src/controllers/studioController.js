@@ -1,15 +1,16 @@
 const db = require('../db');
 
 class StudioController {
+
   async createStudio(req, res) {
     try {
-      const {title, logo, found_year, location_id, poster_studio} = req.body;
+      const {title, logo, found_year, location_id} = req.body;
       const newStudio = await db.query(`
-      INSERT INTO studio
-      (title, logo, found_year, location_id, poster_studio)
-      VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-      [title, logo, found_year, location_id, poster_studio]);
-      res.send('Ok');
+        INSERT INTO studios
+        (title, logo, found_year, location_id)
+        VALUES ($1, $2, $3, $4) RETURNING *`,
+        [title, logo, found_year, location_id]);
+      res.json(newStudio.rows[0]);
     } catch (error) {
       console.log(error)
     }
@@ -29,26 +30,26 @@ class StudioController {
     }
   }
 
-  async updateStudio(req,res) {
+  async getStudioById(req,res) {
     try {
-      const {title, logo, found_year, location_id, poster_studio} = req.body;
-      const newStudio = await db.query(`
-        UPDATE studios
-        SET title=$1, logo=$2, found_year=$3, location_id=$4, poster_studio=$5`,
-        [title, logo, found_year, location_id, poster_studio, id]);
-      res.json(studio.rows[0]);  
+      const id = req.params.id;
+      const studio = await db.query(`
+        SELECT * FROM studios
+        WHERE id=$1;`, [id]);
+      res.json(studio.rows[0]);
     } catch (error) {
       console.log(error)
     }
   }
 
-  async getStudioById(req,res) {
+  async updateStudio(req,res) {
     try {
-      const id = req.params.id;
-      const studio = await db.query(`
-        SELECT * FROM studio
-        WHERE id=$1`, [id]);
-      res.json(director.rows);
+      const {title, logo, found_year, location_id} = req.body;
+      const newStudio = await db.query(`
+        UPDATE studios
+        SET title=$1, logo=$2, found_year=$3, location_id=$4;`,
+        [title, logo, found_year, location_id, id]);
+      res.json(newStudio.rows[0]);  
     } catch (error) {
       console.log(error)
     }
@@ -57,9 +58,9 @@ class StudioController {
   async deleteStudio(req,res) {
     try {
       const id = req.params.id;
-      const studio = await db.query(`
+      const delStudio = await db.query(`
         DELETE FROM studios WHERE id=$1 RETURNING *`, [id]);
-      res.json(studio.rows[0]);
+      res.json(delStudio.rows[0]);
     } catch (error) {
       console.log(error)
     }

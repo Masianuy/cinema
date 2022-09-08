@@ -18,9 +18,9 @@ function StudioForm() {
 
   const goHome = () => navigate('/studios');
 
-  const onFormikSubmit = (values, actions) => {
+  const onFormikSubmit = (values) => {
     !values.id
-    ? dispatch(createStudioAction({...values, id: Date.now()}))
+    ? dispatch(createStudioAction(values))
     : dispatch(updateStudioAction(values));
     goHome();
   }
@@ -42,10 +42,10 @@ function StudioForm() {
         </Stack>
         <Stack mb={2}>
           <Field name="found_year" as={TextField} fullWidth margin="dense"
-            label="Foundation Year" variant="outlined" />
+            label="Foundation Year" variant="outlined" type="date"/>
         </Stack>
         <Stack mb={2}>
-          <Field name="city" as={TextField} fullWidth margin="dense"
+          <Field name="location_id" as={TextField} fullWidth margin="dense"
             label="City" variant="outlined" />
         </Stack>
         <Stack mb={2}>

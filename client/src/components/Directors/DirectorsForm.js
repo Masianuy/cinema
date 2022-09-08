@@ -1,13 +1,11 @@
 import { Stack, TextField, Button, ButtonGroup } from '@mui/material';
-import { ErrorMessage, Field, Form, Formik, FieldArray } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { emptyDirector } from '../../constants';
 import {createDirectorAction, updateDirectorAction} from '../../store/actions/directorsActions';
 import * as Yup from 'yup';
-import AddIcon from '@mui/icons-material/Add';
-import ClearIcon from '@mui/icons-material/Clear';
 
 function DirectorsForm() {
 
@@ -21,17 +19,16 @@ function DirectorsForm() {
 
   const currentDirector = directors.find((director) => director.id === parseInt(id));
 
-  const onDirectorSubmit = (values, actions) => {
+  const onDirectorSubmit = (values) => {
     !values.id
-      ? dispatch(createDirectorAction({...values, id: Date.now()}))
+      ? dispatch(createDirectorAction(values))
       : dispatch(updateDirectorAction(values))
     goHome();
   };
 
   const schema = Yup.object().shape({
-    fullName: Yup.string()
-      .required('Field full name is required'),
-    birthYear: Yup.number()
+    full_name: Yup.string()
+      .required('Field full name is required')
   })
 
   const renderFormik = (props) => {
@@ -41,50 +38,20 @@ function DirectorsForm() {
           <Field name="full_name" as={TextField}
             required fullWidth margin="dense"
             label="Full name" variant="outlined" />
-          <ErrorMessage name="fullName">{msg => <div>{msg}</div>}</ErrorMessage>
+          <ErrorMessage name="full_name">{msg => <div>{msg}</div>}</ErrorMessage>
         </Stack>
-        {/* <Stack mb={2}>
-          <FormControl>
-            <InputLabel>Birth year</InputLabel>
-            <Field name="birthYear" as={Select} fullWidth margin="dense"
-              label="Birth year" variant="outlined">
-                <MenuItem><em>None</em></MenuItem>
-            </Field>
-          </FormControl>
-        </Stack> */}
         <Stack mb={2}>
-          <Field name="birth_year" as={TextField} fullWidth margin="dense"
+          <Field name="birth_year" as={TextField} type="date" fullWidth margin="dense"
             label="Birth year" variant="outlined" />
         </Stack>
         <Stack mb={2}>
-          <Field name="death_year" as={TextField} fullWidth margin="dense"
+          <Field name="death_year" as={TextField} type="date" fullWidth margin="dense"
             label="Death year" variant="outlined" />
         </Stack>
         <Stack mb={2}>
-          <Field name="nationalities" as={TextField} fullWidth margin="dense"
+          <Field name="national_id" as={TextField} fullWidth margin="dense"
             label="Nationality" variant="outlined" />
         </Stack>
-        <fieldset style={{padding: "5px 10px"}}>
-          <legend style={{padding: "0 10px", fontSize: "16px", letterSpacing: "0.09em"}}>Movies</legend>
-          {/* <FieldArray name="movies">
-            {({push, remove, form: {values: {movies}}}) => {
-              return (
-                <Stack spacing={2}>
-                  {movies.map((movie, index) => (
-                    <Stack key={index} direction="row" spacing={2}>
-                      <Field name={`movies[${index}]`} as={TextField} fullWidth
-                        margin="dense" variant="outlined"></Field>
-                      {index > 0 && (<Button variant="contained" size="small"
-                        type="button" startIcon={<ClearIcon />} onClick={() => remove(index)} />)}
-                      <Button variant="contained" size="small" type="button"
-                        startIcon={<AddIcon />} onClick={() => push('')} />
-                    </Stack>
-                    ))}
-                </Stack>
-              )
-            }}
-          </FieldArray> */}
-        </fieldset>
         <Stack mb={2}>
           <Field name="poster_director" as={TextField} fullWidth margin="dense"
             label="Image" variant="outlined" />
